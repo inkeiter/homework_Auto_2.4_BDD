@@ -9,9 +9,13 @@ branches:
 build: off  # будем использовать свой скрипт сборки
 
 install:
-  # Даем права на выполнение ПЕРВЫМ ДЕЛОМ
+  # 1. Сначала перегенерируем wrapper
+  - gradle wrapper --gradle-version 8.13 --distribution-type bin
+
+  # 2. Затем даем права на выполнение
   - chmod +x gradlew
-  # Запускаем SUT
+
+  # 3. Запускаем SUT
   - java -jar ./artifacts/app-ibank-build-for-testers.jar &
   - sleep 15
 
