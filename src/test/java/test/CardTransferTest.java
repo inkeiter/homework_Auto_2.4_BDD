@@ -24,36 +24,36 @@ public class CardTransferTest {
         dashboard = verificationPage.validVerify("12345");
     }
 
-//    @Test
-//    public void shouldTransferMoneyBetweenCards() {
-//        // Given
-//        int initialBalanceFirstCard = dashboard.getCardBalance(0);
-//        int initialBalanceSecondCard = dashboard.getCardBalance(1);
-//        int transferAmount = 500;
-//        String sourceCardNumber = "5559 0000 0000 0001";
-//
-//        // When
-//        TransferPage transferPage = dashboard.selectCardToTransfer(1); // Пополняем вторую карту
-//        dashboard = transferPage.makeTransfer(sourceCardNumber, transferAmount);
-//
-//        // Then
-//        assertThat(dashboard.getCardBalance(0), equalTo(initialBalanceFirstCard - transferAmount));
-//        assertThat(dashboard.getCardBalance(1), equalTo(initialBalanceSecondCard + transferAmount));
-//    }
-@Test
-public void shouldTransferMoneyBetweenCards() {
-    System.out.println("Opening login page...");
-    LoginPage loginPage = new LoginPage().open();
+    @Test
+    public void shouldTransferMoneyBetweenCards() {
+        // Given
+        int initialBalanceFirstCard = dashboard.getCardBalance(0);
+        int initialBalanceSecondCard = dashboard.getCardBalance(1);
+        int transferAmount = 500;
+        String sourceCardNumber = "5559 0000 0000 0001";
 
-    System.out.println("Attempting login...");
-    try {
-        VerificationPage verificationPage = loginPage.validLogin(DataHelper.getAuthInfo());
-        System.out.println("Login successful");
-    } catch (Exception e) {
-        System.out.println("Login failed: " + e.getMessage());
-        // Сделайте скриншот для диагностики
-        Selenide.screenshot("login_error");
-        throw e;
+        // When
+        TransferPage transferPage = dashboard.selectCardToTransfer(1); // Пополняем вторую карту
+        dashboard = transferPage.makeTransfer(sourceCardNumber, transferAmount);
+
+        // Then
+        assertThat(dashboard.getCardBalance(0), equalTo(initialBalanceFirstCard - transferAmount));
+        assertThat(dashboard.getCardBalance(1), equalTo(initialBalanceSecondCard + transferAmount));
     }
-}
+//@Test
+//public void shouldTransferMoneyBetweenCards() {
+//    System.out.println("Opening login page...");
+//    LoginPage loginPage = new LoginPage().open();
+//
+//    System.out.println("Attempting login...");
+//    try {
+//        VerificationPage verificationPage = loginPage.validLogin(DataHelper.getAuthInfo());
+//        System.out.println("Login successful");
+//    } catch (Exception e) {
+//        System.out.println("Login failed: " + e.getMessage());
+//        // Сделайте скриншот для диагностики
+//        Selenide.screenshot("login_error");
+//        throw e;
+//    }
+//}
 }
