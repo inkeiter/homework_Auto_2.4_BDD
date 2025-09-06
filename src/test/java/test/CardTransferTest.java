@@ -8,6 +8,8 @@ import pages.DashboardPage;
 import pages.LoginPage;
 import pages.TransferPage;
 import pages.VerificationPage;
+import data.AuthInfo;
+import data.VerificationCode;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -18,10 +20,20 @@ public class CardTransferTest {
 
     @BeforeEach
     public void login() {
-        // Выносим логин в отдельный метод, чтобы не повторять в каждом тесте
+        // 1. Открываем страницу логина
         LoginPage loginPage = new LoginPage().open();
-        VerificationPage verificationPage = loginPage.validLogin(DataHelper.getAuthInfo());
-        dashboard = verificationPage.validVerify("12345");
+
+        // 2. Получаем данные для авторизации
+        AuthInfo authInfo = DataHelper.getAuthInfo();
+
+        // 3. Логинимся и получаем страницу верификации
+        VerificationPage verificationPage = loginPage.validLogin(authInfo);
+
+        // 4. Получаем код верификации
+        VerificationCode code = DataHelper.getVerificationCodeFor(authInfo);
+
+        // 5. Вводим код и получаем dashboard
+        dashboard = verificationPage.validVerify(code);
     }
 
     @Test
@@ -40,20 +52,4 @@ public class CardTransferTest {
         assertThat(dashboard.getCardBalance(0), equalTo(initialBalanceFirstCard - transferAmount));
         assertThat(dashboard.getCardBalance(1), equalTo(initialBalanceSecondCard + transferAmount));
     }
-//@Test
-//public void shouldTransferMoneyBetweenCards() {
-//    System.out.println("Opening login page...");
-//    LoginPage loginPage = new LoginPage().open();
-//
-//    System.out.println("Attempting login...");
-//    try {
-//        VerificationPage verificationPage = loginPage.validLogin(DataHelper.getAuthInfo());
-//        System.out.println("Login successful");
-//    } catch (Exception e) {
-//        System.out.println("Login failed: " + e.getMessage());
-//        // Сделайте скриншот для диагностики
-//        Selenide.screenshot("login_error");
-//        throw e;
-//    }
-//}
 }

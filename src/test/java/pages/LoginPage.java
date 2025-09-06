@@ -7,6 +7,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import data.DataHelper;
+import data.AuthInfo;
+import data.VerificationCode;
 
 import java.time.Duration;
 
@@ -32,14 +34,14 @@ public class LoginPage {
         return this;
     }
 
-    public VerificationPage validLogin(DataHelper.AuthInfo info) {
+    public VerificationPage validLogin(AuthInfo info) {
         loginField.setValue(info.getLogin());
         passwordField.setValue(info.getPassword());
         loginButton.click();
         return page(VerificationPage.class); // Ждем загрузки следующей страницы
     }
 
-    public LoginPage invalidLogin(DataHelper.AuthInfo info) {
+    public LoginPage invalidLogin(AuthInfo info) {
         loginField.setValue(info.getLogin());
         passwordField.setValue(info.getPassword());
         loginButton.click();
