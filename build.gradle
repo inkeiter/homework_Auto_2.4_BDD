@@ -47,7 +47,9 @@ sourceSets {
 }
 
 test {
-    useJUnitPlatform() // Важно: используем JUnit 5
-    systemProperty 'selenide.headless', System.getProperty('selenide.headless', 'true')
+    useJUnitPlatform() {
+        includeEngines 'junit-jupiter'
+    }
+    systemProperty 'selenide.headless', 'true'
     systemProperty 'file.encoding', 'UTF-8'
 }
