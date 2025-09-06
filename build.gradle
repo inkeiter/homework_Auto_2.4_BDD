@@ -45,11 +45,3 @@ sourceSets {
         }
     }
 }
-
-test {
-    useJUnitPlatform() {
-        includeEngines 'junit-jupiter'
-    }
-    systemProperty 'selenide.headless', 'true'
-    systemProperty 'file.encoding', 'UTF-8'
-}
