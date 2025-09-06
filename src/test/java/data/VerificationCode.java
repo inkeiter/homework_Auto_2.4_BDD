@@ -1,8 +1,5 @@
 package data;
 
-import lombok.Value;
-
-@Value
 public class VerificationCode {
     private final String code;
 

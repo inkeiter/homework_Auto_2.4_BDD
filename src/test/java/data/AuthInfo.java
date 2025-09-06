@@ -1,9 +1,27 @@
 package data;
 
-import lombok.Value;
+//import lombok.Value;
 
-@Value
+//@Value
+//public class AuthInfo {
+//    String login;
+//    String password;
+//}
+
 public class AuthInfo {
-    String login;
-    String password;
+    private final String login;
+    private final String password;
+
+    public AuthInfo(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }
