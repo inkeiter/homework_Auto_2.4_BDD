@@ -1,7 +1,9 @@
 package test;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import data.DataHelper;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.DashboardPage;
@@ -17,6 +19,11 @@ import static org.hamcrest.Matchers.equalTo;
 public class CardTransferTest {
 
     private DashboardPage dashboard;
+
+    @BeforeAll
+    static void setup() {
+        System.setProperty("chromeoptions.args", "--incognito,--disable-password-leak-detection");
+    }
 
     @BeforeEach
     public void login() {

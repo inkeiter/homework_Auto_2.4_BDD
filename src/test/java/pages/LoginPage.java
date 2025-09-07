@@ -25,7 +25,7 @@ public class LoginPage {
     private SelenideElement errorNotification = $(".notification");
 
     public LoginPage open() {
-        Selenide.open("http://127.0.0.1:9999");
+        Selenide.open("http://localhost:9999");
         return this;
     }
 
