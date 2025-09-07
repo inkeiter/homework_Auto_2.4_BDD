@@ -5,7 +5,7 @@ import com.codeborne.selenide.Selenide;
 import data.DataHelper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 import pages.DashboardPage;
 import pages.LoginPage;
 import pages.TransferPage;
