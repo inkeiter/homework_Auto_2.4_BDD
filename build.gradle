@@ -32,9 +32,3 @@ dependencies {
     testImplementation 'org.slf4j:slf4j-simple:2.0.3'
     testImplementation 'org.hamcrest:hamcrest:2.2'
 }
-
-tasks.register('cucumber', Test) {
-    useJUnitPlatform()
-    testLogging.showStandardStreams = true
-    systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
-}
