@@ -1,5 +1,3 @@
-package features.card_transfer;
-
 #language:ru
 
 
