@@ -26,6 +26,15 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
     testImplementation 'com.codeborne:selenide:6.19.1'
+    testImplementation 'io.cucumber:cucumber-java:7.15.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.15.0'
+    testImplementation 'io.cucumber:cucumber-core:7.15.0'
     testImplementation 'org.slf4j:slf4j-simple:2.0.3'
     testImplementation 'org.hamcrest:hamcrest:2.2'
+}
+
+tasks.register('cucumber', Test) {
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+    systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
 }
